@@ -17,7 +17,7 @@ export default function BlogBox({
         overflow="hidden" 
         my="12" 
         w={{base:"75%", lg:"50%"}}
-        _hover={{textDecoration:"none"}}
+        _hover={{textDecoration:"none", shadow:"lg"}}
     >
         <Stack display={{base:"flex", md:"none"}}>
             <CoverImage title={title} url={coverImage.url} slug={slug} />

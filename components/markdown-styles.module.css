@@ -16,3 +16,24 @@
 .markdown h3 {
   @apply text-2xl mt-8 mb-4 leading-snug;
 }
+
+.markdown a {
+  color: #fc5130;
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+.markdown ol ol,
+.markdown ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown ol ol ol,
+.markdown ol ul ol,
+.markdown ul ol ol,
+.markdown ul ul ol {
+  list-style-type: lower-alpha;
+}
