@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Container from '@/components/container'
 import PostBody from '@/components/post-body'
+import PostMarkdown from '@/components/post-markdown'
 import MoreStories from '@/components/more-stories'
 import Header from '@/components/header'
 import PostHeader from '@/components/post-header'
@@ -34,7 +35,7 @@ export default function Post({ post, morePosts, preview }) {
             coverImage={post.coverImage}
             date={post.date}
           />
-          <PostBody content={post.content} />
+          <PostMarkdown content={post.content} />
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Stack>
       )}
@@ -44,7 +45,7 @@ export default function Post({ post, morePosts, preview }) {
 
 export async function getStaticProps({ params, preview = null }) {
   const data = await getPostAndMorePosts(params.slug, preview)
-  const content = await markdownToHtml(data?.posts[0]?.content || '')
+  const content = (data?.posts[0]?.content || '')
 
   return {
     props: {
