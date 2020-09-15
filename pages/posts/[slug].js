@@ -26,7 +26,7 @@ export default function Post({ post, morePosts, preview }) {
       {router.isFallback ? (
         <Heading>Loading…</Heading>
       ) : (
-        <Stack align="center" textAlign="center" w="100%">
+        <Stack align="center" textAlign="center">
           <Head>
             <title>{post.title}</title>
           </Head>
@@ -35,7 +35,9 @@ export default function Post({ post, morePosts, preview }) {
             coverImage={post.coverImage}
             date={post.date}
           />
+          <Stack  w={{base:"90%", md:"75%", lg:"50%"}} textAlign="start">
           <PostMarkdown content={post.content} />
+          </Stack>
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Stack>
       )}

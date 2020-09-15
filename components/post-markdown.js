@@ -1,23 +1,28 @@
 import ReactMarkdown from "react-markdown/with-html";
+import markdownStyles from './markdown-styles.module.css'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { Image } from "@chakra-ui/core"
+import { Image, Stack } from "@chakra-ui/core"
 
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
 };
 
-const MarkdownImage = ({ alt, src }) => (
-  <Image
-    alt={alt}
-    src={src}
-    className="w-full"
-  />
-);
+const MarkdownImage = ({ alt, src }) => {
+    const imageUrl = `${
+      src.startsWith('/') ? "http://localhost:1337" : ''
+    }${src}`
+    console.log("img url:", imageUrl)
+    return (
+    <Stack align="center">
+        <Image alt={alt} src={imageUrl}/>
+    </Stack>
+  );
+}
 
 export default function PostMarkdown({ content }) {
   return (
     <ReactMarkdown
-      className="mb-4 prose-sm prose sm:prose lg:prose-lg"
+    className={markdownStyles['markdown']}
       escapeHtml={false}
       source={content}
       renderers={{ code: CodeBlock, image: MarkdownImage }}

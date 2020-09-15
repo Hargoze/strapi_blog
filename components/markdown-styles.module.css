@@ -9,12 +9,28 @@
   @apply my-6;
 }
 
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  font-weight: 600;
+  margin-bottom: 1rem
+}
+
+.markdown h1 {
+  font-size: 32px; 
+}
+
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  font-size: 24px;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  font-size: 20px;
+}
+
+.markdown h4 {
+  font-size: 16px;
 }
 
 .markdown a {
@@ -36,4 +52,10 @@
 .markdown ul ol ol,
 .markdown ul ul ol {
   list-style-type: lower-alpha;
+}
+
+.markdown blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: .25em solid #dfe2e5;
 }
