@@ -2,19 +2,14 @@ import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from '../components/cover-image'
 import PostTitle from '../components/post-title'
+import { Flex, Stack, Box, Text, Image, Heading, SimpleGrid, IconButton, Button, Link, PseudoBox} from '@chakra-ui/core'
 
 export default function PostHeader({ title, coverImage, date, author }) {
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} url={coverImage.url} />
-      </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-6 text-lg">
-          <Date dateString={date} />
-        </div>
-      </div>
-    </>
+    <Stack maxW="50%" align="center">
+      <Heading>{title}</Heading>
+      <CoverImage title={title} url={coverImage.url} />
+      <Date dateString={date} />
+    </Stack>
   )
 }

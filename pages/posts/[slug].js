@@ -12,6 +12,8 @@ import PostTitle from '@/components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '@/lib/constants'
 import markdownToHtml from '@/lib/markdownToHtml'
+import BlogBox from '@/components/blog-box'
+import { Flex, Stack, Box, Text, Image, Heading, SimpleGrid, IconButton, Button, Link, PseudoBox} from '@chakra-ui/core'
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
@@ -19,33 +21,24 @@ export default function Post({ post, morePosts, preview }) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <Layout preview={preview}>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article>
-              <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-              />
-              <PostBody content={post.content} />
-            </article>
-            <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-          </>
-        )}
-      </Container>
-    </Layout>
+    <Stack align="center" textAlign="center" w="100%">
+      {router.isFallback ? (
+        <Heading>Loading…</Heading>
+      ) : (
+        <Stack align="center" textAlign="center" w="100%">
+          <Head>
+            <title>{post.title}</title>
+          </Head>
+          <PostHeader
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+          />
+          <PostBody content={post.content} />
+          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        </Stack>
+      )}
+    </Stack>  
   )
 }
 

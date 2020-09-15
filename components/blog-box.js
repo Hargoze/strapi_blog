@@ -1,4 +1,3 @@
-import Avatar from './avatar'
 import Date from './date'
 import CoverImage from './cover-image'
 import { Flex, Stack, Box, Text, Image, Heading, SimpleGrid, IconButton, Button, Link, PseudoBox} from '@chakra-ui/core'
@@ -11,19 +10,31 @@ export default function BlogBox({
   slug,
 }) {
   return (
-    <Link href={`/posts/${slug}`} bg="gray.100" rounded="lg" overflow="hidden">
-        <Stack display={{base:"flex", lg:"none"}}>
+    <Link 
+        href={`/posts/${slug}`} 
+        bg="gray.100" 
+        rounded="lg" 
+        overflow="hidden" 
+        my="12" 
+        w={{base:"75%", lg:"50%"}}
+        _hover={{textDecoration:"none"}}
+    >
+        <Stack display={{base:"flex", md:"none"}}>
             <CoverImage title={title} url={coverImage.url} slug={slug} />
             <Box>
-                <Text>{title}</Text>
-                <Text>{excerpt}</Text>
+                <Heading>{title}</Heading>
+                <Text fontSize="25px">{excerpt}</Text>
+                <Date dateString={date} />
             </Box>
         </Stack>
-        <Flex display={{base:"none", lg:"flex"}}>
+        <Flex display={{base:"none", md:"flex"}} justify="space-around">
             <CoverImage title={title} url={coverImage.url} slug={slug} />
-            <Box>
-                <Text>{title}</Text>
-                <Text>{excerpt}</Text>
+            <Box pt="2"  w={{md:"100%", lg:"50%"}}>
+                <Stack h="33%" align="center" justify="center">
+                   <Heading>{title}</Heading> 
+                </Stack>
+                <Text fontSize="25px" pt="4">{excerpt}</Text>
+                <Date dateString={date} />
             </Box>
         </Flex>
     </Link>
