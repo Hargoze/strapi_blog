@@ -15,6 +15,7 @@ export default function Index({ allPosts, preview }) {
   const morePosts = allPosts.slice(1)
   return (
     <Stack align="center" textAlign="center">
+      <Heading fontSize="62px">Blog</Heading>
       {allPosts.map((post, i) => (
         <BlogBox 
         title={post.title}

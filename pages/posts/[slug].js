@@ -14,7 +14,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '@/lib/constants'
 import markdownToHtml from '@/lib/markdownToHtml'
 import BlogBox from '@/components/blog-box'
-import { Flex, Stack, Box, Text, Image, Heading, SimpleGrid, IconButton, Button, Link, PseudoBox} from '@chakra-ui/core'
+import { Flex, Stack, Box, Text, Image, Heading, Spinner, SimpleGrid, IconButton, Button, Link, PseudoBox} from '@chakra-ui/core'
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
@@ -24,22 +24,25 @@ export default function Post({ post, morePosts, preview }) {
   return (
     <Stack align="center" textAlign="center" w="100%">
       {router.isFallback ? (
-        <Heading>Loading…</Heading>
+        <Box>
+          <Heading>Loading…</Heading>
+          <Spinner color="primary.500" />
+        </Box>
       ) : (
-        <Stack align="center" textAlign="center" w="90%">
-          <Head>
-            <title>{post.title}</title>
-          </Head>
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-          />
-          <Stack w={{base:"90%", md:"75%", lg:"50%"}} textAlign="start">
-          <PostMarkdown content={post.content} />
-          </Stack>
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+      <Stack align="center" textAlign="center" w="100%">
+        <Head>
+          <title>{post.title}</title>
+        </Head>
+        <PostHeader
+          title={post.title}
+          coverImage={post.coverImage}
+          date={post.date}
+        />
+        <Stack w={{base:"85%", md:"75%", lg:"40%"}} textAlign="start">
+        <PostMarkdown content={post.content} />
         </Stack>
+        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+      </Stack>
       )}
     </Stack>  
   )
