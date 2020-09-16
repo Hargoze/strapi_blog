@@ -44,6 +44,7 @@
 
 .markdown ol ol,
 .markdown ul ol {
+  margin-left: 1.5rem;
   list-style-type: lower-roman;
 }
 
@@ -51,7 +52,12 @@
 .markdown ol ul ol,
 .markdown ul ol ol,
 .markdown ul ul ol {
+  margin-left: 1.5rem;
   list-style-type: lower-alpha;
+}
+
+.markdown li {
+  margin-left: 1.5rem;
 }
 
 .markdown blockquote {
@@ -59,3 +65,5 @@
   color: #6a737d;
   border-left: .25em solid #dfe2e5;
 }
+
+/* src: https://github.com/sindresorhus/github-markdown-css/blob/gh-pages/github-markdown.css */

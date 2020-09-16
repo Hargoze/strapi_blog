@@ -1,10 +1,14 @@
 import ReactMarkdown from "react-markdown/with-html";
 import markdownStyles from './markdown-styles.module.css'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { Image, Stack } from "@chakra-ui/core"
+import { Image, Stack, Box } from "@chakra-ui/core"
 
 const CodeBlock = ({ language, value }) => {
-  return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
+  return (
+    <Box overflow="scroll">
+      <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>
+    </Box>
+  );
 };
 
 const MarkdownImage = ({ alt, src }) => {

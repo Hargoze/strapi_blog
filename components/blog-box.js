@@ -16,20 +16,20 @@ export default function BlogBox({
         rounded="lg" 
         overflow="hidden" 
         my="12" 
-        w={{base:"75%", lg:"50%"}}
+        w={{base:"300px", lg:"50%"}}
         _hover={{textDecoration:"none", shadow:"lg"}}
     >
-        <Stack display={{base:"flex", md:"none"}}>
+        <Stack display={{base:"flex", lg:"none"}}>
             <CoverImage title={title} url={coverImage.url} slug={slug} />
-            <Box>
+            <Box maxW="300px">
                 <Heading>{title}</Heading>
                 <Text fontSize="25px">{excerpt}</Text>
                 <Date dateString={date} />
             </Box>
         </Stack>
-        <Flex display={{base:"none", md:"flex"}} justify="space-around">
+        <Flex display={{base:"none", lg:"flex"}} justify="space-between">
             <CoverImage title={title} url={coverImage.url} slug={slug} />
-            <Box pt="2"  w={{md:"100%", lg:"50%"}}>
+            <Box pt="2"  w={{md:"100%", lg:"50%"}} pr="4">
                 <Stack h="33%" align="center" justify="center">
                    <Heading>{title}</Heading> 
                 </Stack>
